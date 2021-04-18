@@ -3,7 +3,7 @@
 %global gh_user  isacikgoz
 
 Name:           gitbatch
-Version:        0.5.0
+Version:        0.6.1
 Release:        1%{?dist}
 Summary:        Manage your git repositories in one place
 Group:          Applications/System
@@ -39,5 +39,8 @@ install -Dm0755 %{_builddir}/bin/%{name} %{buildroot}%{_bindir}/%{name}
 %{_bindir}/%{name}
 
 %changelog
+* Mon Apr 19 2021 Jamie Curnow <jc@jc21.com> 0.6.1-1
+- https://github.com/isacikgoz/gitbatch/releases/tag/v0.6.1
+
 * Tue Nov 11 2019 Jamie Curnow <jc@jc21.com> 0.5.0-1
 - Initial Spec

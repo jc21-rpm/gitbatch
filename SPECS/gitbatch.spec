@@ -9,6 +9,7 @@ Summary:        Manage your git repositories in one place
 Group:          Applications/System
 License:        MIT
 URL:            https://github.com/%{gh_user}/%{name}
+Source:         https://github.com/%{gh_user}/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  git golang
 
 %description
@@ -18,19 +19,10 @@ a simple tool to handle this job. Although the focus is batch jobs, you can stil
 facto micro management of your git repositories (e.g add/reset, stash, commit etc.)
 
 %prep
-wget https://github.com/%{gh_user}/%{name}/archive/v%{version}.tar.gz
-tar -xzf v%{version}.tar.gz
-mkdir -p %{_builddir}/src/github.com/%{gh_user}/
-cd %{_builddir}/src/github.com/%{gh_user}/
-ln -snf %{_builddir}/%{name}-%{version} %{name}
-cd %{name}
+%setup -q -n %{name}-%{version}
 
 %build
-export GOPATH="%{_builddir}"
-export PATH=$PATH:"%{_builddir}"/bin
-cd %{_builddir}/src/github.com/%{gh_user}/%{name}
-export GO111MODULE=on
-go build -o %{_builddir}/bin/%{name}
+go build -o %{_builddir}/bin/%{name} cmd/gitbatch/main.go
 
 %install
 install -Dm0755 %{_builddir}/bin/%{name} %{buildroot}%{_bindir}/%{name}

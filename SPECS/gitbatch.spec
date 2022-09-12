@@ -4,7 +4,7 @@
 
 Name:           gitbatch
 Version:        0.6.1
-Release:        1%{?dist}
+Release:        1
 Summary:        Manage your git repositories in one place
 Group:          Applications/System
 License:        MIT
